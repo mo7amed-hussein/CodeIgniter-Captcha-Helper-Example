@@ -46,7 +46,15 @@ class CaptchaController extends CI_Controller
         $this->session->set_userdata('captchaWord',$data['word']);
         return $data;
      }
-    
+    /**
+     * load captcha view
+     */
+     public function index()
+     {
+        $data=$this->initCaptcha();
+        //load captchView view
+        $this->load->view('captchaView',$data);
+     }
     
 }
 ?>
