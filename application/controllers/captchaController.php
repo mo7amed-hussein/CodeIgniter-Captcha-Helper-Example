@@ -70,9 +70,11 @@ class CaptchaController extends CI_Controller
      */
      public function checkCaptcha()
      {
+        $msg='';
         if(isset($_POST['submit']))
         {
          $captcha=$this->session->userdata['captchaWord'];
+         
          //compare saved captcha word with submitted word
          if(strcasecmp($captcha,$_POST['captcha'])==0)
          {
