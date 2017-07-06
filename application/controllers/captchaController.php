@@ -65,5 +65,32 @@ class CaptchaController extends CI_Controller
          echo $data['image'];
       }
     
+    /**
+     * check submitted captcha
+     */
+     public function checkCaptcha()
+     {
+        if(isset($_POST['submit']))
+        {
+         $captcha=$this->session->userdata['captchaWord'];
+         //compare saved captcha word with submitted word
+         if(strcasecmp($captcha,$_POST['captcha'])==0)
+         {
+            $msg='Well done ,captche is right';
+         }  
+         else
+         {
+            $msg='try again,captche is wrong';
+         } 
+        }
+        
+         $data=$this->initCaptcha();
+         $data['msg']=$msg;
+        //load captchView view
+        $this->load->view('captchaView',$data);
+        
+        
+     }
 }
+
 ?>
