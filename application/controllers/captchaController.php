@@ -55,6 +55,15 @@ class CaptchaController extends CI_Controller
         //load captchView view
         $this->load->view('captchaView',$data);
      }
+     
+     /**
+      *generate new captcha image and echo it
+      */
+      public function refreshCaptcha()
+      {
+         $data=$this->initCaptcha();
+         echo $data['image'];
+      }
     
 }
 ?>
